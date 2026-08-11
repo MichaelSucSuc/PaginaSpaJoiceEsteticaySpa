@@ -134,55 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'ArrowRight') showNext(e);
     });
 
-    // Contact Form Validation
-    const form = document.getElementById('contactForm');
-    const nameInput = document.getElementById('name');
-    const messageInput = document.getElementById('message');
-    const successAlert = document.getElementById('contact-success');
 
-    const checkInput = (input, group, condition) => {
-        if (condition) {
-            group.classList.remove('has-error');
-            return true;
-        } else {
-            group.classList.add('has-error');
-            return false;
-        }
-    };
-
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const isNameValid = checkInput(nameInput, document.getElementById('nameGroup'), nameInput.value.trim() !== '');
-        const isMessageValid = checkInput(messageInput, document.getElementById('messageGroup'), messageInput.value.trim() !== '');
-
-        if (isNameValid && isMessageValid) {
-            // Success mockup representation
-            successAlert.style.display = 'block';
-            form.reset();
-            
-            // Remove error classes if any
-            document.querySelectorAll('.form-group').forEach(group => {
-                group.classList.remove('has-error');
-            });
-
-            // Scroll to alert smoothly
-            successAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-            // Hide success message after 5 seconds
-            setTimeout(() => {
-                successAlert.style.display = 'none';
-            }, 5000);
-        }
-    });
-
-    // Live field validation on blur
-    nameInput.addEventListener('blur', () => {
-        checkInput(nameInput, document.getElementById('nameGroup'), nameInput.value.trim() !== '');
-    });
-    messageInput.addEventListener('blur', () => {
-        checkInput(messageInput, document.getElementById('messageGroup'), messageInput.value.trim() !== '');
-    });
 
     // Before/After Interactive Sliders
     const sliders = document.querySelectorAll('.ba-slider');
